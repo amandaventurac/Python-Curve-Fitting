@@ -1,4 +1,4 @@
-# Python
+# Python-Curve-Fitting
  
  <b>What is this repository for?</b>
 

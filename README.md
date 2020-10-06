@@ -20,8 +20,8 @@ It was always the same process of searching for some values in a text file, and 
 <b>The equation to be fitted:</b>
 
 Equation1
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
-![Eq1](https://github.com/amandaventurac/Python-Curve-Fitting/main/eq1.gif?raw=true "Equation1")
+![eq1](https://user-images.githubusercontent.com/41547014/95214976-d72e8000-07c6-11eb-9a45-8f0beced9a29.gif)
+
 Where R is the tip radius and Er is the Reduced Young Modullus.
 The R value can present some small variation from one experiment to another. The Er value is a sample constant.
 

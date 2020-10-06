@@ -28,7 +28,7 @@ The R value can present some small variation from one experiment to another. The
 The R value can be extracted from the maximum load and depth. 
 
 
-![eq2](https://user-images.githubusercontent.com/41547014/95215234-24125680-07c7-11eb-9255-937ef01b5a73.gif)(eq. 2
+![eq2](https://user-images.githubusercontent.com/41547014/95215234-24125680-07c7-11eb-9255-937ef01b5a73.gif)(eq. 2)
 
 
 

@@ -17,36 +17,44 @@ It was always the same process of searching for some values in a text file, and 
 - example text files with experimental data to be fitted
 
 <b>The equation to be fitted:</b>
-The nanoindentation curve is constructed when a very small tip presses the sample surface. The Load versus Depth curve is described by the Hertz equation:
 
-<img src="https://render.githubusercontent.com/render/math?math= load = \frac{4}{3}* E_{r}*\sqrt{R*{depth}^{3}}">  equation1
+Equation1:
+(https://github.com/[username]/[reponame]/blob/[branch]/eq1.gif?raw=true)
+Where R is the tip radius and Er is the Reduced Young Modullus.
+The R value can present some small variation from one experiment to another. The Er value is a sample constant.
+
+Equation2:
+The R value can be extracted from the maximum load and depth:
+(https://github.com/[username]/[reponame]/blob/[branch]/eq2.gif?raw=true)
+
 
 
 <b>The Scritpt process:</b> 
  
 Get_Er_hmax_and_Measurement_lines(filename):
- search the Er and hmax values, they are unique values on each text file. In addition, this function can also identify which lines present the Pd x Force           essay data.
- Returns initial_data_line, final_data_line, Er, hmax
+ search the Er and hmax values, they are unique values on each text file. In addition, this function can also identify which lines present the Load x Depth           essay data.
+ Returns initial_data_line, final_data_line, Er, hmax(depth_max)
 
 Get_Measurement_data(initial_data_line,final_data_line, filename):
- this function can extract two lists with experimental Pd and Force data from each text file, depending on initial and final data lines returned from previous function.
- Returns Pd, F_experimental
+ this function can extract two lists with experimental depths and load data from each text file, depending on initial and final data lines returned from previous function.
+ Returns depth, load_experimental
 
-Define_adjust_depth_range(Pd):
- we want to plot only the loading part of the curve, so this funcion make a list with only the Pd values on the loading part of the curve.
- Returns Pd_loading
+Define_adjust_depth_range(depth):
+ we want to plot only the loading part of the curve, so this funcion make a list with only the depth values on the loading part of the curve.
+ Returns depth_loading
 
-fitting_R(Pd,Pd_small_range, F_experimental, Er, filename, hmax):
+fitting_R(depth,depth_loading,load_experimental, Er, filename, hmax):
  this fuction calculates the R value based on maximum forces and depth (equation 2), and uses it to calculate the theoretical F for Pd values. This process is called Hertz fitting. The R value is returned to a list called R_list.
-Returns F_fitted, R 
+Returns load_fitted, R 
  
-plot_experimental_and_fitted(Pd, Pd_loading, F_experimental, F_fitted,filename):
+plot_experimental_and_fitted(depth, depth_loading, load_experimental, load_fitted,filename):
 This function plots the experimental and fitted curves, and saves the result as png files, where the R value is displayed for each curve.
 
-plot_dispersion_and_Mean_R(R_list)
+plot_dispersion_and_Mean_R(R_list):
 Finally, we can see the R dispersion and mean. It should not present a variation larger than 10% of mean value, as we can see. The graph is saved.
 
-
+main() and def Read_Files():
+They are functions contructed to call the other functions all over the loop with files.
 
 
 

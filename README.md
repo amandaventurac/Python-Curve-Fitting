@@ -20,13 +20,13 @@ It was always the same process of searching for some values in a text file, and 
 <b>The equation to be fitted:</b>
 
 Equation1:
-(https://github.com/[username]/[reponame]/blob/[branch]/eq1.gif?raw=true)
+(https://github.com/amandaventurac/Python-Curve-Fitting/main/eq1.gif?raw=true)
 Where R is the tip radius and Er is the Reduced Young Modullus.
 The R value can present some small variation from one experiment to another. The Er value is a sample constant.
 
 Equation2:
 The R value can be extracted from the maximum load and depth:
-(https://github.com/[username]/[reponame]/blob/[branch]/eq2.gif?raw=true)
+(https://github.com/amandaventurac/Python-Curve-Fitting/main/eq2.gif?raw=true))
 
 
 

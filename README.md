@@ -8,7 +8,13 @@ It works with nanoindentation experimental files, but it can be modified to othe
 
  <b>About its creation</b>
  
-I had to fit a lot of experimental curves, and perfom some statistical analysis with them.
+The nanoindentation essay is used to get mechanical properties of materials at the nanometric scale. The process is basically composed by a very small tip (with a nanometric radius) that presses tha sample surface to construct the Load versus depth profile.
+
+
+![nanoindentation_example](https://user-images.githubusercontent.com/41547014/95217103-34c3cc00-07c9-11eb-83a5-82807717131d.png)
+Image reference: [1]
+
+To get statistical relevant information, a lot of profiles are generated per sample region. Therefore, I had to fit a lot of experimental curves and perfom some statistical analysis with them.
 It was always the same process of searching for some values in a text file, and use them into some equation to get a parameter. Then,  I usually have to see how this important parameter changes from one measurement to another. 
 
  <b>What does this repository comprise?</b>
@@ -59,5 +65,5 @@ Finally, we can see the R dispersion and mean.
 main() and def Read_Files():
 They are functions contructed to call the other functions.
 
-
+[1]Ladani, L., Harvey, E., Choudhury, S. F., & Taylor, C. R. (2013). Effect of varying test parameters on elastic–plastic properties extracted by nanoindentation tests. Experimental Mechanics, 53(8), 1299-1309.
 

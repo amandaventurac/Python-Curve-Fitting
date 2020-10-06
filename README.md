@@ -11,7 +11,8 @@ It works with nanoindentation experimental files, but it can be modified to othe
 The nanoindentation essay is used to get mechanical properties of materials at the nanometric scale. The process is basically composed by a very small tip (with a nanometric radius) that presses tha sample surface to construct the Load versus depth profile.
 
 
-![nanoindentation_example](https://user-images.githubusercontent.com/41547014/95217103-34c3cc00-07c9-11eb-83a5-82807717131d.png)
+![nanoindentation_example](https://user-images.githubusercontent.com/41547014/95218448-a8b2a400-07ca-11eb-8c68-a64cb0b3362b.png)
+
 
 Image reference: [1]
 

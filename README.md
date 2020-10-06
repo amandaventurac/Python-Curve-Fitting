@@ -19,17 +19,16 @@ It was always the same process of searching for some values in a text file, and 
 
 <b>The equation to be fitted:</b>
 The main equation that describes this essay is the following Hertz equation.
-Equation1:
 
-![eq1](https://user-images.githubusercontent.com/41547014/95214976-d72e8000-07c6-11eb-9a45-8f0beced9a29.gif)
+![eq1](https://user-images.githubusercontent.com/41547014/95214976-d72e8000-07c6-11eb-9a45-8f0beced9a29.gif)(eq. 1)
 
 Where R is the tip radius and Er is the Reduced Young Modullus.
 The R value can present some small variation from one experiment to another. The Er value is a sample constant.
 
 The R value can be extracted from the maximum load and depth. 
-Equation2:
 
-![eq2](https://user-images.githubusercontent.com/41547014/95215234-24125680-07c7-11eb-9255-937ef01b5a73.gif)
+
+![eq2](https://user-images.githubusercontent.com/41547014/95215234-24125680-07c7-11eb-9255-937ef01b5a73.gif)(eq. 2
 
 
 

@@ -12,6 +12,7 @@ The nanoindentation essay is used to get mechanical properties of materials at t
 
 
 ![nanoindentation_example](https://user-images.githubusercontent.com/41547014/95217103-34c3cc00-07c9-11eb-83a5-82807717131d.png)
+
 Image reference: [1]
 
 To get statistical relevant information, a lot of profiles are generated per sample region. Therefore, I had to fit a lot of experimental curves and perfom some statistical analysis with them.

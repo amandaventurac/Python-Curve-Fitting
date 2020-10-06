@@ -33,29 +33,29 @@ The R value can be extracted from the maximum load and depth:
 <b>The Scritpt process:</b> 
  
 Get_Er_hmax_and_Measurement_lines(filename):
- search the Er and hmax values, they are unique values on each text file. In addition, this function can also identify which lines present the Load x Depth           essay data.
+Search the Er and hmax values, they are unique values on each text file. In addition, this function can also identify which lines present the Load x Depth           essay data.
  Returns initial_data_line, final_data_line, Er, hmax(depth_max)
 
 Get_Measurement_data(initial_data_line,final_data_line, filename):
- this function can extract two lists with experimental depths and load data from each text file, depending on initial and final data lines returned from previous function.
+This function can extract two lists with experimental depths and load data from each text file, depending on initial and final data lines returned from previous function.
  Returns depth, load_experimental
 
 Define_adjust_depth_range(depth):
- we want to plot only the loading part of the curve, so this funcion make a list with only the depth values on the loading part of the curve.
+We want to plot only the loading part of the curve, so this funcion make a list with only the depth values on the loading part of the curve.
  Returns depth_loading
 
 fitting_R(depth,depth_loading,load_experimental, Er, filename, hmax):
- this fuction calculates the R value based on maximum forces and depth (equation 2), and uses it to calculate the theoretical F for Pd values. This process is called Hertz fitting. The R value is returned to a list called R_list.
-Returns load_fitted, R 
+This fuction calculates the R value based on maximum forces and depth (equation 2), and uses it to calculate the theoretical F for Pd values. This process is called Hertz fitting. The R value is returned to a list called R_list.
+ Returns load_fitted, R 
  
 plot_experimental_and_fitted(depth, depth_loading, load_experimental, load_fitted,filename):
 This function plots the experimental and fitted curves, and saves the result as png files, where the R value is displayed for each curve.
 
 plot_dispersion_and_Mean_R(R_list):
-Finally, we can see the R dispersion and mean. It should not present a variation larger than 10% of mean value, as we can see. The graph is saved.
+Finally, we can see the R dispersion and mean. 
 
 main() and def Read_Files():
-They are functions contructed to call the other functions all over the loop with files.
+They are functions contructed to call the other functions.
 
 
 

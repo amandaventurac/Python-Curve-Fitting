@@ -7,6 +7,7 @@ It's basically an automated fitting python app.
 It works with nanoindentation experimental files, but it can be modified to other needs depending on the data to be fitted.
 
  <b>About its creation</b>
+ 
 I had to fit a lot of experimental curves, and perfom some statistical analysis with them.
 It was always the same process of searching for some values in a text file, and use them into some equation to get a parameter. Then,  I usually have to see how this important parameter changes from one measurement to another. 
 
@@ -58,11 +59,3 @@ They are functions contructed to call the other functions all over the loop with
 
 
 
- 
- 
- 
-
- 
- 
- 
- 

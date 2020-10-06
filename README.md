@@ -26,6 +26,7 @@ It was always the same process of searching for some values in a text file, and 
 - example text files with experimental data to be fitted
 
 <b>The equation to be fitted:</b>
+
 The main equation that describes this essay is the following Hertz equation.
 
 ![eq1](https://user-images.githubusercontent.com/41547014/95214976-d72e8000-07c6-11eb-9a45-8f0beced9a29.gif)(eq. 1)

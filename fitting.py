@@ -6,48 +6,46 @@ from PIL import ImageTk, Image
 import os
 
 
-def plot_experimental_and_fitted(Pd, Pd_small_range, F_experimental):
-	plt.plot(Pd,F_experimental, color = "blue")
-	plt.plot(Pd_small_range,F_fitted, color = "red")
-	plt.show()
-
-
-def fitting_R(Pd,Pd_small_range, F_experimental, Er, filename, hmax):
-	global R, F_fitted
-	F_fitted = []
-	R = 9/16 *((max(F_experimental)**2)/((Er**2) *(hmax **3)))
-	for a in range (0, len(Pd_small_range)):
-		F = (4/3)*Er*np.sqrt(R*(Pd_small_range[a]**3))
-		F_fitted.append(F)
+def plot_experimental_and_fitted(depth, depth_loading, load_experimental, load_fitted,filename):
 	plt.figure()
-	Pd_in_nanometers = [element * 1E9 for element in Pd]
-	F_experimental_in_milinewtons = [element * 1E3 for element in F_experimental]
-	Pd_small_range_in_nanometers = [element * 1E9 for element in Pd_small_range]
-	F_fitted_in_milinewtons = [element * 1E3 for element in F_fitted]
-	plt.plot(Pd_in_nanometers, F_experimental_in_milinewtons, 'o', color = "blue", label = "experimental data")
-	plt.plot(Pd_small_range_in_nanometers, F_fitted_in_milinewtons, '-', color = "red", linewidth=2.2, label = "fitted data")
+	depth_in_nanometers = [element * 1E9 for element in depth]
+	load_experimental_in_milinewtons = [element * 1E3 for element in load_experimental]
+	depth_loading_in_nanometers = [element * 1E9 for element in depth_loading]
+	load_fitted_in_milinewtons = [element * 1E3 for element in load_fitted]
+	plt.plot(depth_in_nanometers, load_experimental_in_milinewtons, 'o', color = "blue", label = "experimental data")
+	plt.plot(depth_loading_in_nanometers, load_fitted_in_milinewtons, '-', color = "red", linewidth=2.2, label = "fitted data")
 	plt.ylabel("Load (mN)")
 	plt.xlabel("Depth (nm)")
 	plt.title(str(filename.split("/")[-1]) + "\n" + "R = " + str(np.round(R*1E9,2)) + ' nm', size = 10 )
 	plt.legend()
 	plt.savefig(str(filename.split(".txt")[0])+"curve.png")
 	plt.close()
-	return F_fitted, R
+
+
+
+def fitting_R(depth,depth_loading, load_experimental, Er, filename, hmax):
+	global R, load_fitted
+	load_fitted = []
+	R = 9/16 *((max(load_experimental)**2)/((Er**2) *(hmax **3))) #Here I put the equation 2
+	for a in range (0, len(depth_loading)):
+		load = (4/3)*Er*np.sqrt(R*(depth_loading[a]**3)) #Here I put the equation 1
+		load_fitted.append(load)
+	return load_fitted, R
 
 
 def Get_Measurement_data(initial_data_line,final_data_line, filename):
-	global Pd, F_experimental
-	Pd = []
-	F_experimental = []
+	global depth, load_experimental
+	depth = []
+	load_experimental = []
 	file2 = open(filename, 'r+', encoding = "windows-1252")
 	line_number2 = 0 
 	for line2 in file2:
 		line_number2 +=1
 		if line_number2 in range(initial_data_line, final_data_line+1):
-			Pd.append(float((line2.split())[1].replace(',', '.'))*(10**(-9))) #nanometers to meters, saving as SI unit
-			F_experimental.append(float((line2.split())[2].replace(',', '.'))*(10**(-3)))#milinewtons to newtons, saving as SI unit 
+			depth.append(float((line2.split())[1].replace(',', '.'))*(10**(-9))) #nanometers to meters, saving as SI unit
+			load_experimental.append(float((line2.split())[2].replace(',', '.'))*(10**(-3)))#milinewtons to newtons, saving as SI unit 
 	file2.close()
-	return Pd, F_experimental
+	return depth, load_experimental
 	
 
    
@@ -71,14 +69,27 @@ def Get_Er_hmax_and_Measurement_lines(filename):
 
 
 
-def Define_adjust_depth_range(Pd):
-	global Pd_small_range
-	Pd_small_range = []
-	for element in Pd:
-		if element <= max(Pd):
-			Pd_small_range.append(element)
-	return Pd_small_range
+def Define_adjust_depth_range(depth):
+	global depth_loading
+	depth_loading = []
+	for element in depth:
+		if element <= max(depth):
+			depth_loading.append(element)
+	return depth_loading
 
+def plot_dispersion_and_Mean_R(R_list):
+	R_mean = []
+	x_mean_axis = []
+	for i in range (0, len(R_list)):
+		R_mean.append(np.mean(R_list))
+		x_mean_axis.append(i)
+	plt.plot(R_list ,'o')
+	plt.plot(x_mean_axis, R_mean, '-', color = "red")
+	plt.title("R dispersion" + " \n "+ "mean  = " + str(np.round(np.mean(R_list),2))+ " nm")
+	plt.ylabel("R (nanometers)")
+	plt.tick_params(axis = "x", which = "both", bottom = False, top = False, labelbottom=False)
+	plt.savefig("dispersion_of_R.png", dpi = 300)
+	plt.close()	
 
 def main():
 
@@ -89,17 +100,13 @@ def main():
 
 		Get_Er_hmax_and_Measurement_lines(filename)
 		Get_Measurement_data(initial_data_line,final_data_line, filename)
-		Define_adjust_depth_range(Pd)
-		fitting_R(Pd,Pd_small_range, F_experimental, Er, filename, hmax)
+		Define_adjust_depth_range(depth)
+		fitting_R(depth,depth_loading, load_experimental, Er, filename, hmax)
+		plot_experimental_and_fitted(depth, depth_loading, load_experimental, load_fitted,filename)
 		R_list.append(R*1E9)# nanometers to plot
 		print("File number " + str(index+1)+ " already analyzed.")
-	plt.plot(R_list ,'o')
-	plt.title("R disperion")
-	plt.ylabel("R (nanometers)")
-	plt.tick_params(axis = "x", which = "both", bottom = False, top = False, labelbottom=False)
-	plt.savefig("dispersion_of_R.png", dpi = 300)
-	plt.close()	
 
+	plot_dispersion_and_Mean_R(R_list)
 
 
 
